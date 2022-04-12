@@ -1,4 +1,5 @@
 Challenge TAP
+-------------
 
 Lo primero que debemos hacer es descargar las dependencias de nuestro proyecto, para lo cual vamos a utilizar el comando 'npm install' o 'npm i'.
 Una vez instaladas vamos a poder correr nuestro proyecto. Para correr el proyecto vamos a usar el comando 'npm run dev'
