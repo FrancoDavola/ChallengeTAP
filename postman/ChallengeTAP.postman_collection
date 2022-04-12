@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "5ede157b-16a8-44ab-bf63-8728025f9b5a",
+		"name": "Challenge TAP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save Game",
+			"item": [
+				{
+					"name": "Save Game- Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is not 500\", function () {\r",
+									"    pm.response.to.not.have.status(500);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is json\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response have correct properties\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('data');\r",
+									"    pm.expect(jsonData.data).to.have.property('game');\r",
+									"    pm.expect(jsonData.data.game).to.have.property('id');\r",
+									"    pm.expect(jsonData.data.game.id).to.be.an('string');\r",
+									"    pm.expect(jsonData.data.game).to.have.property('created');\r",
+									"    pm.expect(jsonData.data.game).to.have.property('state');\r",
+									"   pm.expect(jsonData.data.game.state).to.have.property('code');\r",
+									"   pm.expect(jsonData.data.game.state.code).to.be.an('number');\r",
+									"   pm.expect(jsonData.data.game.state).to.have.property('description');\r",
+									"   pm.expect(jsonData.data.game.state.description).to.be.an('string');\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"game\": {\r\n\"state\": {\r\n    \"code\": 1,\r\n\"description\": \"LOST\"\r\n}\r\n},\r\n\"cells\": []\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/game",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"game"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Game - Failure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"pm.test(\"Status code is  500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is json\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response have correct properties\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('error');\r",
+									"    pm.expect(jsonData.error).to.have.property('message');\r",
+									"    pm.expect(jsonData.error.message).to.be.an('string');\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"randomNumber\", Math.random());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ironman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/game",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"game"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Game Detail",
+			"item": [
+				{
+					"name": "Get Game Detail - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is not 500\", function () {\r",
+									"    pm.response.to.not.have.status(500);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is json\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response have correct properties\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('data');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/game/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"game",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "51b330ee-85d0-4520-94f1-28b1fc692531"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get  Game - Success/Created",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is not 500\", function () {\r",
+									"    pm.response.to.not.have.status(500);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is json\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response have correct properties\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('data');\r",
+									"    pm.expect(jsonData.data).to.have.property('game');\r",
+									"    pm.expect(jsonData.data.game).to.have.property('id');\r",
+									"    pm.expect(jsonData.data.game.id).to.be.an('string');\r",
+									"    pm.expect(jsonData.data.game).to.have.property('created');\r",
+									"    pm.expect(jsonData.data.game).to.have.property('state');\r",
+									"   pm.expect(jsonData.data.game.state).to.have.property('code');\r",
+									"   pm.expect(jsonData.data.game.state.code).to.be.an('number');\r",
+									"   pm.expect(jsonData.data.game.state).to.have.property('description');\r",
+									"   pm.expect(jsonData.data.game.state.description).to.be.an('string');\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/game",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"game"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "randomNumber",
+			"value": ""
+		}
+	]
+}
