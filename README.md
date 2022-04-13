@@ -45,6 +45,6 @@ Para esto vamos a necesitar dos terminales. En una terminal vamos a levantar nue
 ****************************************************
 ****************************************************
 
-IMPORTANTE : En este caso habilite la base de datos para que todas las ip puedan ingresar y pueda usarse el proyecto sin tener la necesidad de crear una DB en mongo. Esto no se debería hacer pero para facilitar el uso me parecía lo mejor, ya que es un challenge de prueba y luego se borrara dicha DB.
+IMPORTANTE : En este caso habilite la base de datos para que todas las ip puedan ingresar y pueda usarse el proyecto sin tener la necesidad de crear una DB en mongo. Esto no se debería hacer pero para facilitar el uso me parecía lo mejor, ya que es un challenge de prueba y luego se borrara dicha DB. También subí el .env para facilitar la conexión, sino solo se subiría el .env_example.
 
 Saludos!
